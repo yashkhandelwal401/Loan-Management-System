@@ -1,0 +1,196 @@
+a!formLayout(
+  label: if(ri!Lender= true, "Loan Application of " & ri!LoanInformation.FirstName, "Loan Application"), 
+  contents: {
+    a!columnsLayout(
+      columns: {
+        a!columnLayout(
+          contents: {
+            a!integerField(
+              label: "BorrowerID",
+              labelPosition: if(ri!Lender=true,"ADJACENT","ABOVE"),
+              value: ri!LoanInformation.BorrowerID,
+              saveInto: {ri!LoanInformation.BorrowerID},
+              refreshAfter: "UNFOCUS",
+              required: true,
+              readOnly: if(ri!Lender=true , true, false),
+              validations: {}
+            ),
+            a!sideBySideLayout(
+              items: {
+                a!sideBySideItem(
+                  item: a!textField(
+                    label: "FirstName",
+                    labelPosition: if(ri!Lender=true,"ADJACENT","ABOVE"),
+                    value: ri!LoanInformation.LastName,
+                    saveInto: {ri!LoanInformation.FirstName},
+                    refreshAfter: "UNFOCUS",
+                    required: true,
+                    readOnly: if(ri!Lender=true , true, false),
+                    validations: {}
+                  )
+                )
+              }
+            )
+          }
+        ),
+        a!columnLayout(
+          contents: {
+            a!textField(
+              label: "LastName",
+              labelPosition: if(ri!Lender=true,"ADJACENT","ABOVE"),
+              value: ri!LoanInformation.LastName,
+              saveInto: {ri!LoanInformation.LastName},
+              refreshAfter: "UNFOCUS",
+              required: true,
+              readOnly: if(ri!Lender=true , true, false),
+              validations: {}
+            ),
+            a!dateField(
+              label: "DateOfBirth",
+              value: ri!LoanInformation.DateOfBirth,
+              saveInto: {ri!LoanInformation.DateOfBirth},
+              required: true,
+              validations: {}
+            )
+          }
+        )
+      }
+    ),
+    a!sideBySideLayout(
+      items: {
+        a!sideBySideItem(
+          item: a!integerField(
+            label: "PhoneNumber",
+            labelPosition: if(ri!Lender=true,"ADJACENT","ABOVE"),
+            value: ri!LoanInformation.PhoneNumber,
+            saveInto: {ri!LoanInformation.PhoneNumber},
+            refreshAfter: "UNFOCUS",
+            required: true,
+            readOnly: if(ri!Lender=true , true, false),
+            validations: {}
+          )
+        ),
+        a!sideBySideItem(
+          item: a!textField(
+            label: "EmailAddress",
+            labelPosition: if(ri!Lender=true,"ADJACENT","ABOVE"),
+            value: ri!LoanInformation.EmailAddress,
+            saveInto: {ri!LoanInformation.EmailAddress},
+            refreshAfter: "UNFOCUS",
+            required: true,
+            readOnly: if(ri!Lender=true , true, false),
+            validations: {}
+          )
+        )
+      }
+    ),
+    a!sideBySideLayout(
+      items: {
+        a!sideBySideItem(
+          item: a!textField(
+            label: "Address",
+            labelPosition: if(ri!Lender=true,"ADJACENT","ABOVE"),
+            value: ri!LoanInformation.Address,
+            saveInto: {ri!LoanInformation.Address},
+            refreshAfter: "UNFOCUS",
+            required: true,
+            readOnly: if(ri!Lender=true , true, false),
+            validations: {}
+          )
+        ),
+        a!sideBySideItem(
+          item: a!integerField(
+            label: "AnnualIncome",
+            labelPosition: if(ri!Lender=true,"ADJACENT","ABOVE"),
+            value: ri!LoanInformation.AnnualIncome,
+            saveInto: {ri!LoanInformation.AnnualIncome},
+            refreshAfter: "UNFOCUS",
+            required: true,
+            readOnly: if(ri!Lender=true , true, false),
+            validations: {}
+          )
+        )
+      }
+    ),
+    a!sideBySideLayout(
+      items: {
+        a!sideBySideItem(
+          item: a!integerField(
+            label: "CreditScore",
+            labelPosition: if(ri!Lender=true,"ADJACENT","ABOVE"),
+            value: ri!LoanInformation.CreditScore,
+            saveInto: {ri!LoanInformation.CreditScore},
+            refreshAfter: "UNFOCUS",
+            required: true,
+            readOnly: if(ri!Lender=true , true, false),
+            validations: {}
+          )
+        )
+      }
+    ),
+    a!sideBySideLayout(
+      items: {
+        a!sideBySideItem(
+          item: a!integerField(
+            label: "LoanAmount",
+            labelPosition: if(ri!Lender=true,"ADJACENT","ABOVE"),
+            value: ri!LoanInformation.LoanAmount,
+            saveInto: {ri!LoanInformation.LoanAmount},
+            refreshAfter: "UNFOCUS",
+            required: true,
+            readOnly: if(ri!Lender=true , true, false),
+            validations: {}
+          )
+        ),
+        a!sideBySideItem(
+          item: a!textField(
+            label: "LoanType",
+            labelPosition: if(ri!Lender=true,"ADJACENT","ABOVE"),
+            value: ri!LoanInformation.LoanType,
+            saveInto: {ri!LoanInformation.LoanType},
+            refreshAfter: "UNFOCUS",
+            required: true,
+            readOnly: if(ri!Lender=true , true, false),
+            validations: {}
+          )
+        )
+      }
+    ),
+    a!paragraphField(
+      label: "LoanDecisionNotification",
+      labelPosition: "ABOVE",
+      value: ri!LoanInformation.LoanDecisionNotification,
+      saveInto: {ri!LoanInformation.LoanDecisionNotification},
+      refreshAfter: "UNFOCUS",
+      height: "MEDIUM",
+      required: true,
+      validations: {}
+    )
+  },
+  buttons: a!buttonLayout(
+    primaryButtons: {
+      a!buttonWidget(
+        label: if(ri!Lender=true, "Disbursed","Submit"),
+        saveInto: {
+        a!save(ri!LoanInformation.datelogged, now()),
+        a!save(ri!LoanInformation.LoanDecision,true)
+        },
+        submit: true,
+        style: "SOLID"
+      )
+    },
+    secondaryButtons: {
+      a!buttonWidget(
+        label: if(ri!Lender=true, "Declined" ,"Cancel"),
+        value: true,
+        saveInto: {
+          ri!cancel,
+          a!save(ri!LoanInformation.LoanDecision,false)
+          },
+        submit: true,
+        style: "OUTLINE",
+        validate: false
+      )
+    }
+  )
+)
