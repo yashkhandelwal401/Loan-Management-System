@@ -1,0 +1,190 @@
+a!headerContentLayout(
+  header: {
+    a!cardLayout(
+      contents: {},
+      height: "AUTO",
+      style: "#ff9900",
+      shape: "SEMI_ROUNDED",
+      marginBelow: "NONE",
+      showBorder: false
+    )
+    
+  },
+  contents: {
+    a!columnsLayout(
+      columns: {
+        a!columnLayout(
+          contents: {
+            a!integerField(
+              label: "Borrower Id",
+              labelPosition: "ADJACENT",
+              value: ri!LoanRecord[recordType!LMS Loan Application Record.fields.borrowerid],
+              saveInto: {},
+              refreshAfter: "UNFOCUS",
+              readOnly: true,
+              validations: {}
+            ),
+            a!integerField(
+              label: "Phone number",
+              labelPosition: "ADJACENT",
+              value: ri!LoanRecord[recordType!LMS Loan Application Record.fields.phonenumber],
+              saveInto: {},
+              refreshAfter: "UNFOCUS",
+              readOnly: true,
+              validations: {}
+            )
+          }
+        ),
+        a!columnLayout(
+          contents: {
+            a!textField(
+              label: "First Name",
+              labelPosition: "ADJACENT",
+              value: ri!LoanRecord[recordType!LMS Loan Application Record.fields.firstname],
+              saveInto: {},
+              refreshAfter: "UNFOCUS",
+              readOnly: true,
+              validations: {}
+            ),
+            a!textField(
+              label: "Last Name",
+              labelPosition: "ADJACENT",
+              value: ri!LoanRecord[recordType!LMS Loan Application Record.fields.lastname],
+              saveInto: {},
+              refreshAfter: "UNFOCUS",
+              readOnly: true,
+              validations: {}
+            )
+          }
+        )
+      }
+    ),
+    a!columnsLayout(
+      columns: {
+        a!columnLayout(
+          contents: {
+            a!textField(
+              label: "Email address",
+              labelPosition: "ADJACENT",
+              value: ri!LoanRecord[recordType!LMS Loan Application Record.fields.emailaddress],
+              saveInto: {},
+              refreshAfter: "UNFOCUS",
+              readOnly: true,
+              validations: {}
+            ),
+            a!textField(
+              label: "address",
+              labelPosition: "ADJACENT",
+              value: ri!LoanRecord[recordType!LMS Loan Application Record.fields.address],
+              saveInto: {},
+              refreshAfter: "UNFOCUS",
+              readOnly: true,
+              validations: {}
+            )
+          }
+        ),
+        a!columnLayout(
+          contents: {
+            a!integerField(
+              label: "Annual income",
+              labelPosition: "ADJACENT",
+              value: ri!LoanRecord[recordType!LMS Loan Application Record.fields.annualincome],
+              saveInto: {},
+              refreshAfter: "UNFOCUS",
+              readOnly: true,
+              validations: {}
+            ),
+            a!integerField(
+              label: "Credit Score",
+              labelPosition: "ADJACENT",
+              value: ri!LoanRecord[recordType!LMS Loan Application Record.fields.creditscore],
+              saveInto: {},
+              refreshAfter: "UNFOCUS",
+              readOnly: true,
+              validations: {}
+            )
+          }
+        )
+      }
+    ),
+    a!columnsLayout(
+      columns: {
+        a!columnLayout(
+          contents: {
+            a!textField(
+              label: "loantype",
+              labelPosition: "ADJACENT",
+              value: ri!LoanRecord[recordType!LMS Loan Application Record.fields.loantype],
+              saveInto: {},
+              refreshAfter: "UNFOCUS",
+              readOnly: true,
+              validations: {}
+            ),
+            a!textField(
+              label: "loandecisionnotification",
+              labelPosition: "ADJACENT",
+              value: ri!LoanRecord[recordType!LMS Loan Application Record.fields.loandecisionnotification],
+              saveInto: {},
+              refreshAfter: "UNFOCUS",
+              readOnly: true,
+              validations: {}
+            )
+          }
+        ),
+        a!columnLayout(
+          contents: {
+            a!integerField(
+              label: "Loan Amount",
+              labelPosition: "ADJACENT",
+              value: ri!LoanRecord[recordType!LMS Loan Application Record.fields.loanamount],
+              saveInto: {},
+              refreshAfter: "UNFOCUS",
+              readOnly: true,
+              validations: {}
+            )
+          }
+        )
+      }
+    ),
+    a!columnsLayout(
+      columns: {
+        a!columnLayout(
+          contents: {
+            a!dateField(
+              label: "Date of birth",
+              labelPosition: "ADJACENT",
+              value: ri!LoanRecord[recordType!LMS Loan Application Record.fields.dateofbirth],
+              saveInto: {},
+              readOnly: true,
+              validations: {}
+            )
+          }
+        ),
+        a!columnLayout(
+          contents: {
+            a!dateTimeField(
+              label: "datelogged",
+              labelPosition: "ADJACENT",
+              value: ri!LoanRecord[recordType!LMS Loan Application Record.fields.datelogged],
+              saveInto: {},
+              readOnly: true,
+              validations: {}
+            )
+          }
+        ),
+        a!columnLayout(
+          contents: {}
+        )
+      }
+    ),
+    a!textField(
+      label: "Loan Decision",
+      labelPosition: "ADJACENT",
+      value: ri!LoanRecord[recordType!LMS Loan Application Record.fields.loandecision],
+      saveInto: {},
+      refreshAfter: "UNFOCUS",
+      readOnly: true,
+      validations: {}
+    )
+  }
+) 
