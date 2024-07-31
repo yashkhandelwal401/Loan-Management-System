@@ -1,0 +1,44 @@
+a!headerContentLayout(
+  header: {
+    a!cardLayout(
+      contents: {},
+      height: "AUTO",
+      style: "#666666",
+      marginBelow: "NONE",
+      showBorder: false
+    )
+  },
+  contents: {
+    a!gridField(
+      label: "Task details",
+      labelPosition: "ABOVE",
+      data: a!queryProcessAnalytics(
+        report: cons!LMS_PROCESS_REPORT_POINTER,
+        contextProcessModels: cons!LMS_PROCESS_MODEL_POINTER,
+        query: a!query(
+          pagingInfo: fv!pagingInfo
+        )
+      ),
+      columns: {
+        a!gridColumn(
+          label: "Task Name",
+          value: a!linkField(
+            links: a!processTaskLink(
+              label: fv!row.c0,
+               task: fv!identifier
+            )
+          )
+        ),
+        a!gridColumn(
+          label: "Status",
+          value: rule!LMS_getNewLoan(LOAN: fv!row.c1),
+        ),
+        a!gridColumn(
+          label: "Start Time",
+          value: text(fv!row.c3,"dd mm yyyy hh:mm AM/PM")
+        )
+      },
+      validations: {}
+    )
+  }
+)
